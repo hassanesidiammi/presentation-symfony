@@ -1,0 +1,15 @@
+vendor
+vendor/*
+var
+var/*
+phpunit.xml
+.php_cs.cache
+composer.phar
+package.tar
+/packages.json
+/.phpunit
+.idea
+web/phpinfo.php
+web/app_dev.php
+web/app.php
+
