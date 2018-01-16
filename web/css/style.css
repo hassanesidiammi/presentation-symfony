@@ -137,6 +137,26 @@ ul.links, #nav ul {
     color: #fff;
     padding-bottom: 6px;
 }
+
+#content table, .table{
+    width: 100%;
+    border: 1px solid gray;
+    padding: 2px;
+}
+
+#content table th .action, .tac{
+    text-align: center;
+}
+
+.link {
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    padding: 0;
+    color: #1191b2;
+}
+
 a:link, a:active, a:visited {
     text-decoration: underline;
 }
