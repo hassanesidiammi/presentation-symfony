@@ -178,16 +178,6 @@ class Post
     }
 
     /**
-     * Get created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
