@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -25,6 +26,9 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="25", max="100")
      */
     private $title;
 
@@ -32,6 +36,8 @@ class Post
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank()
      */
     private $slug;
 
@@ -39,6 +45,9 @@ class Post
      * @var string
      *
      * @ORM\Column(name="body", type="text")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="100")
      */
     private $body;
 
@@ -46,6 +55,9 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
+     *
+     * @Assert\NotBlank()
+     * @Assert\DateTime(format="Y-mm-dd H:i:m")
      */
     private $created;
 
