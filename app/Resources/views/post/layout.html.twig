@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="body">
+        <div id="header">
+            <div id="logo">
+                Formation Symfony
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <ul>
+                <li>
+                    <a href="#">List</a>
+                </li>
+
+                <li>
+                    <a href="#">Add</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="top">
+
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
