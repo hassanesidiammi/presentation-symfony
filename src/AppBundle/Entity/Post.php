@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Validator\Constraints as AppAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -42,6 +43,7 @@ class Post
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      *
      * @Assert\NotBlank()
+     * @AppAssert\ConstraintSlug()
      */
     private $slug;
 
