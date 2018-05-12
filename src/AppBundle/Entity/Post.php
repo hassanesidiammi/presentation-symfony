@@ -3,12 +3,17 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ *
+ * @UniqueEntity(fields={"title"})
+ * @UniqueEntity(fields={"slug"})
  */
 class Post
 {
@@ -25,6 +30,9 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="25", max="100")
      */
     private $title;
 
@@ -32,6 +40,8 @@ class Post
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank()
      */
     private $slug;
 
@@ -46,6 +56,9 @@ class Post
      * @var string
      *
      * @ORM\Column(name="editorial", type="text")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="20", max="80")
      */
     private $editorial;
 
@@ -53,6 +66,9 @@ class Post
      * @var string
      *
      * @ORM\Column(name="body", type="text")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="100")
      */
     private $body;
 
@@ -60,6 +76,9 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="date")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Date()
      */
     private $createdAt;
 
@@ -67,6 +86,8 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="date", nullable=true)
+     *
+     * @Assert\Date()
      */
     private $publishedAt;
 
