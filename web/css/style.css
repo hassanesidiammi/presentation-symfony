@@ -49,6 +49,10 @@ div {
     margin-bottom: 15px;
     margin-top: 15px;
 }
+.clear {
+    clear: both;
+    width: 100%;
+}
 .block, .form {
     padding: 10px;
     padding-bottom: 3px;

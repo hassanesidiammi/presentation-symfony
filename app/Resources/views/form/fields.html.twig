@@ -1,0 +1,22 @@
+{% block _post_widget %}
+    {{ form_row(form.title) }}
+    {{ form_row(form.slug) }}
+    {{ form_row(form.editorial) }}
+    {% if form.deleteImage is defined %}
+        {% spaceless %}
+        <div class="clear">
+            <div class="image">
+                <img width="150" src="{{ asset('uploads/images/' ~ form.vars['value'].image ) }}">
+            </div>
+            <div>
+                {{ form_row(form.deleteImage) }}
+            </div>
+        </div>
+        <div class="clear"></div>
+        {% endspaceless %}
+    {% endif %}
+    {#{{ form_row(form.imageFile) }}#}
+    {#{{ form_row(form.body) }}#}
+    {#{{ form_row(form.publishedAt) }}#}
+    {#{{ form_row(form.createdAt) }}#}
+{% endblock %}
