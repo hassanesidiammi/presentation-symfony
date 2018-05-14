@@ -26,6 +26,16 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $post->getImageFile();
+            if($file) {
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+                $post->setImage($fileName);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -56,6 +66,23 @@ class PostController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $post->getImageFile();
+
+            if($file) {
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+                if ($post->getImage()) {
+                    @unlink($this->getParameter('images_directory').'/'.$post->getImage());
+                }
+                $post->setImage($fileName);
+            } elseif ($editForm->has('deleteImage') && $editForm->get('deleteImage')->getData()) {
+                @unlink($this->getParameter('images_directory').'/'.$post->getImage());
+                $post->setImage(null);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));

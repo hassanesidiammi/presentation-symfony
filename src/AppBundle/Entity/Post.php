@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Validator\Constraints as AppAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -53,6 +54,13 @@ class Post
      * @ORM\Column(name="image", type="string", nullable=true)
      */
     private $image;
+
+    /**
+     * @var UploadedFile
+     *
+     * @Assert\Image()
+     */
+    private $imageFile;
 
     /**
      * @var string
@@ -271,4 +279,24 @@ class Post
     {
         return $this->image;
     }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param UploadedFile $imageFile
+     * @return Post
+     */
+    public function setImageFile(UploadedFile $imageFile)
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
 }

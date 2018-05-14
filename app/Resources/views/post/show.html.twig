@@ -18,6 +18,10 @@
                 <td>{{ post.slug }}</td>
             </tr>
             <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/images/' ~ post.image) }}" height="150"></td>
+            </tr>
+            <tr>
                 <th>Editorial</th>
                 <td>{{ post.editorial }}</td>
             </tr>
