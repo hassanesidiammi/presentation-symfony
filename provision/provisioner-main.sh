@@ -29,14 +29,14 @@ sudo cat > /etc/nginx/sites-available/$server_app <<- EOM
 server {
     listen 80;
     listen [::]:80 ipv6only=on;
-    root /vagrant;
-    index index.php index.html index.htm;
+    root /vagrant/web;
+    index app_dev.php;
     server_name $server_app;
     location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
+        try_files \$uri \$uri/ /app_dev.php?\$query_string;
     }
     location ~ \.php\$ {
-        try_files \$uri /index.php =404;
+        try_files \$uri /app_dev.php =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)\$;
         fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
         fastcgi_index index.php;
